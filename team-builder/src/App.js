@@ -21,30 +21,34 @@ function App() {
   const [teamMemberForm, setTeamMemberForm] = useState(initialTeamForm);
   const [memberToEdit, setMemberToEdit] = useState(initialTeamForm);
 
-  const onNameInputChange = e => {
-    setTeamMemberForm({
-      id: uuid(),
-      name: e.target.value,
-      email: teamMemberForm.email,
-      role: teamMemberForm.role
-    });
-  };
-  const onEmailInputChange = e => {
-    setTeamMemberForm({
-      id: uuid(),
-      name: teamMemberForm.name,
-      email: e.target.value,
-      role: teamMemberForm.role
-    });
-  };
-  const onRoleInputChange = e => {
-    setTeamMemberForm({
-      id: uuid(),
-      name: teamMemberForm.name,
-      email: teamMemberForm.email,
-      role: e.target.value
-    });
-  };
+const onInputChange = e => {
+  setTeamMemberForm({...teamMemberForm, [e.target.name]: e.target.value });
+}
+
+  // const onNameInputChange = e => {
+  //   setTeamMemberForm({
+  //     id: uuid(),
+  //     name: e.target.value,
+  //     email: teamMemberForm.email,
+  //     role: teamMemberForm.role
+  //   });
+  // };
+  // const onEmailInputChange = e => {
+  //   setTeamMemberForm({
+  //     id: uuid(),
+  //     name: teamMemberForm.name,
+  //     email: e.target.value,
+  //     role: teamMemberForm.role
+  //   });
+  // };
+  // const onRoleInputChange = e => {
+  //   setTeamMemberForm({
+  //     id: uuid(),
+  //     name: teamMemberForm.name,
+  //     email: teamMemberForm.email,
+  //     role: e.target.value
+  //   });
+  // };
 
   const onSubmit = e => {
     e.preventDefault();
@@ -53,7 +57,7 @@ function App() {
       setTeamMemberForm(initialTeamForm);
     };
 
-  const onEditMember = (teamMember) => {
+const onEditMember = (teamMember) => {
     setMemberToEdit(teamMember)
     setTeamMemberForm(memberToEdit);
   }
@@ -62,9 +66,7 @@ function App() {
     <div className="App">
       <Form
         teamMemberForm={teamMemberForm}
-        onNameInputChange={onNameInputChange}
-        onEmailInputChange={onEmailInputChange}
-        onRoleInputChange={onRoleInputChange}
+        onInputChange={onInputChange}
         onSubmit={onSubmit}
         memberToEdit={memberToEdit}
       />

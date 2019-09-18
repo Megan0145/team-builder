@@ -3,9 +3,7 @@ import React from "react";
 export default function Form(props) {
   const { name, email, role } = props.teamMemberForm;
   const {
-    onNameInputChange,
-    onEmailInputChange,
-    onRoleInputChange,
+    onInputChange,
     onSubmit,
     memberToEdit
   } = props;
@@ -15,7 +13,8 @@ export default function Form(props) {
       <label htmlFor="nameInput">Name</label>
       <input
         value={name}
-        onChange={onNameInputChange}
+        name='name'
+        onChange={onInputChange}
         id="nameInput"
         type="text"
       />
@@ -23,7 +22,8 @@ export default function Form(props) {
       <label htmlFor="emailInput">Email</label>
       <input
         value={email}
-        onChange={onEmailInputChange}
+        name='email'
+        onChange={onInputChange}
         id="emailInput"
         type="text"
       />
@@ -31,7 +31,8 @@ export default function Form(props) {
       <label htmlFor="roleInput">Role</label>
       <input
         value={role}
-        onChange={onRoleInputChange}
+        name='role'
+        onChange={onInputChange}
         id="roleInput"
         type="text"
       />
